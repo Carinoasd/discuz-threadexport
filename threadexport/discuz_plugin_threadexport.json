@@ -1,0 +1,68 @@
+{
+ "Title": "Discuz! Plugin",
+ "Data": {
+  "plugin": {
+   "available": "1",
+   "adminid": "1",
+   "name": "主題列表導出",
+   "identifier": "threadexport",
+   "description": "只讀的站務小工具：後台填一個版塊 fid、貼一段樣板，插件把該版塊每一個主題（新到舊）套進樣板，串成一個 UTF-8 純文字檔讓站長下載。本質是合併列印：樣板是信紙、主題是名單。不建資料表、不改任何論壇資料、不加前台 hook，整個插件只有 SELECT。作者 Carinoasd。",
+   "datatables": "",
+   "directory": "threadexport/",
+   "copyright": "主題列表導出 threadexport · (C) 2026 Carinoasd",
+   "version": "1.0.0",
+   "__modules": [
+    {
+     "name": "admincp",
+     "menu": "主題列表導出",
+     "url": "",
+     "type": "3",
+     "adminid": "1",
+     "displayorder": "0"
+    }
+   ]
+  },
+  "version": "X5.0",
+  "var": [
+   {
+    "displayorder": "0",
+    "title": "額外允許的 uid（allow_uids）",
+    "description": "除創始人外，允許使用本工具的 uid，逗號分隔。留空＝只有創始人能用。（例：站長以 uid 1 操作 → 填 1）",
+    "variable": "allow_uids",
+    "type": "text",
+    "extra": "",
+    "value": ""
+   },
+   {
+    "displayorder": "1",
+    "title": "每批撈取筆數（batch_size）",
+    "description": "分批串流時每批撈取的主題數；插件會夾在 500～5000 之間，預設 2000。大版塊調大可略減查詢次數。",
+    "variable": "batch_size",
+    "type": "text",
+    "extra": "",
+    "value": "2000"
+   },
+   {
+    "displayorder": "2",
+    "title": "頁面「加 BOM」的預設值（default_bom）",
+    "description": "下載頁「檔案開頭加 UTF-8 BOM」核取方塊的預設狀態。Windows 記事本／Excel 開起來不會亂碼。",
+    "variable": "default_bom",
+    "type": "select",
+    "extra": "1=是（預設加 BOM）\n0=否",
+    "value": "1"
+   },
+   {
+    "displayorder": "3",
+    "title": "頁面換行符的預設值（default_crlf）",
+    "description": "下載頁換行符的預設值。\n————————\nthreadexport by Carinoasd · (C) 2026 Carinoasd",
+    "variable": "default_crlf",
+    "type": "select",
+    "extra": "1=Windows（CRLF，預設）\n0=Linux/Mac（LF）",
+    "value": "1"
+   }
+  ],
+  "intro": "主題列表導出（threadexport）v1.0.0　作者：Carinoasd\n\n只讀的站務小工具：後台填一個版塊 fid、貼一段樣板，把該版塊每個主題（發帖時間新到舊）套進樣板，串成一個 UTF-8 .txt 檔讓站長下載。樣板用大括號佔位符 {A}~{K}、{N}，支援多行、可夾 BBCode。篩選：單一版塊、只導正常顯示主題、可選含回收站、可選發帖時間範圍。輸出可選 BOM 與 CRLF/LF。大版塊分批串流、記憶體只持有一批。\n\n只有 SELECT，不建資料表、不改任何論壇資料、不加前台 hook。權限：創始人 + 後台可填的額外 uid 清單。\n\n三條退路：1) 後台停用插件即可停止使用；2) 直接刪掉 source/plugin/threadexport/ 目錄；3) 從 pre_common_plugin 刪掉 identifier='threadexport' 那一列（本插件無自有資料表，刪列即淨空）。\n\n(C) 2026 Carinoasd",
+  "installfile": "install.php",
+  "uninstallfile": "uninstall.php"
+ }
+}

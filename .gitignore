@@ -1,0 +1,21 @@
+# 打包產物
+/dist/
+*.zip
+
+# 測試/驗證產物（截圖 docs/ 除外，需入庫）
+/evidence/
+/tools/
+/scratch/
+verify.md
+side-effects.md
+decisions.md
+
+# 相依與環境
+node_modules/
+*.log
+
+# OS / 編輯器雜物
+.DS_Store
+Thumbs.db
+*.swp
+*~
